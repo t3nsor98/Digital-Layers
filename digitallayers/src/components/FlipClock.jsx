@@ -29,7 +29,7 @@ const FlipUnit = ({ label, value }) => {
       const timeout = setTimeout(() => {
         setPrevValue(value)
         setFlip(false)
-      }, 600)
+      }, 600) // Match the animation duration
       return () => clearTimeout(timeout)
     }
   }, [value, prevValue])
@@ -37,14 +37,17 @@ const FlipUnit = ({ label, value }) => {
   return (
     <div className="flex flex-col items-center">
       <div className="relative w-16 h-24 text-white rounded-md overflow-hidden shadow-lg perspective">
+        {/* Top Half */}
         <div className="absolute top-0 w-full h-1/2 bg-[#6A0DAD] flex items-center justify-center text-4xl font-bold z-20">
           {prevValue}
         </div>
-        <div className={`absolute bottom-0 w-full h-1/2 bg-[#5A189A] flex items-center justify-center text-4xl font-bold z-10`}>
-          {flip ? value : prevValue}
+        {/* Bottom Half */}
+        <div className="absolute bottom-0 w-full h-1/2 bg-[#5A189A] flex items-center justify-center text-4xl font-bold z-10">
+          {flip ? prevValue : value}
         </div>
+        {/* Flip Animation */}
         {flip && (
-          <div className="absolute top-0 w-full h-full animate-flip z-30 bg-[#4B0082] text-white text-4xl font-bold flex items-center justify-center rounded-md">
+          <div className="absolute top-0 w-full h-full bg-[#4B0082] text-white text-4xl font-bold flex items-center justify-center rounded-md animate-flip">
             {value}
           </div>
         )}
