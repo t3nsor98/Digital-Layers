@@ -1,6 +1,8 @@
 import "./App.css";
 import Hero from "./components/Hero";
 import Services from "./components/Services";
+import Github from "./components/Github";
+
 import Pricing from "./components/Pricing";
 import FlipClock from "./components/FlipClock";
 function App() {
@@ -8,6 +10,7 @@ function App() {
     <>
       <Hero />
       <Services />
+      <Github />
       <Pricing />
       <FlipClock />
     </>
